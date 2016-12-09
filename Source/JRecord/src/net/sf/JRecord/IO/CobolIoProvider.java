@@ -43,13 +43,13 @@ import net.sf.JRecord.Details.LayoutDetail;
 import net.sf.JRecord.Details.LineProvider;
 import net.sf.JRecord.External.CobolCopybookLoader;
 import net.sf.JRecord.External.CopybookLoader;
-import net.sf.JRecord.External.ToLayoutDetail;
 import net.sf.JRecord.IO.builders.CblIOBuilderMultiSchema;
 import net.sf.JRecord.Numeric.ICopybookDialects;
 import net.sf.JRecord.def.IO.builders.ICobolIOBuilder;
 
 
 /**
+ * 
  * This Class Creates a line-reader or line-writer for a Cobol file (Cobol Copybook).
  *
  * <pre>
@@ -129,6 +129,11 @@ public class CobolIoProvider {
     
 
     /**
+     * <b>Note:</b> This is part of the "old JRecord Interface". 
+     * Most users  will be better off using {@link net.sf.JRecord.JRecordInterface1#COBOL} to 
+     * create {@link net.sf.JRecord.def.IO.builders.IIOBuilder} classes or the 
+     * {@link CobolIoProvider#newIOBuilder(String)}}
+     * 
      * Creates a line reader for a Cobol file
      * 
      * @param fileStructure Structure of the input file
@@ -164,6 +169,11 @@ public class CobolIoProvider {
  }
 
     /**
+      * <b>Note:</b> This is part of the "old JRecord Interface". 
+     * Most users  will be better off using {@link net.sf.JRecord.JRecordInterface1#COBOL} to 
+     * create {@link net.sf.JRecord.def.IO.builders.IIOBuilder} classes or the 
+     * {@link CobolIoProvider#newIOBuilder(String)}}
+     * 
      * Creates a line reader for a Cobol file
      * 
      * @param fileStructure Structure of the input file
@@ -188,6 +198,10 @@ public class CobolIoProvider {
     }
     
     /**
+     * <b>Note:</b> This is part of the "old JRecord Interface". 
+     * Most users  will be better off using {@link net.sf.JRecord.JRecordInterface1#COBOL} to 
+     * create {@link net.sf.JRecord.def.IO.builders.IIOBuilder} classes or the 
+     * {@link CobolIoProvider#newIOBuilder(String)}}
      * Creates a line reader for a Cobol file
      * 
      * @param fileStructure Structure of the input file
@@ -214,14 +228,15 @@ public class CobolIoProvider {
         if (numericType == ICopybookDialects.FMT_MAINFRAME) {
             font = "cp037";
         }
-       	LayoutDetail copyBook = ToLayoutDetail.getInstance().getLayout(
+       	LayoutDetail copyBook = 
        	     copybookInt.loadCopyBook(
                         copybookName,
                         splitOption, 0, font,
                         copybookFormat,
                         numericType, 0, null
                 ).setFileStructure(fileStructure)
-        );
+       	     	 .asLayoutDetail()
+        ;
 
 //       	if (provider == null) {
 //       		provider = LineIOProvider.getInstance().getLineProvider(fileStructure, font);
@@ -236,6 +251,11 @@ public class CobolIoProvider {
 
 
     /**
+     * <b>Note:</b> This is part of the "old JRecord Interface". 
+     * Most users  will be better off using {@link net.sf.JRecord.JRecordInterface1#COBOL} to 
+     * create {@link net.sf.JRecord.def.IO.builders.IIOBuilder} classes or the 
+     * {@link CobolIoProvider#newIOBuilder(String)}}
+     * 
      * Create a line writer for a Cobol File
      * 
      * @param fileStructure structure of the output file
@@ -252,6 +272,11 @@ public class CobolIoProvider {
  
 
      /**
+      * <b>Note:</b> This is part of the "old JRecord Interface". 
+      * Most users  will be better off using {@link net.sf.JRecord.JRecordInterface1#COBOL} to 
+      * create {@link net.sf.JRecord.def.IO.builders.IIOBuilder} classes or the 
+      * {@link CobolIoProvider#newIOBuilder(String)}}
+      * 
       * Create a line writer for a Cobol File
       * 
       * @param schema File-Schema (or file definition)

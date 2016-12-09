@@ -29,7 +29,7 @@
 package net.sf.JRecord.zTest.copy;
 
 import net.sf.JRecord.Common.Constants;
-import net.sf.JRecord.External.ExternalConversion;
+import net.sf.JRecord.External.base.ExternalConversion;
 import net.sf.JRecord.Numeric.ConversionManager;
 import net.sf.JRecord.Numeric.ICopybookDialects;
 import net.sf.JRecord.zExamples.copy.ParseArgsCobol2Cobol;
@@ -117,7 +117,7 @@ public class TstCobo2CobolArgs extends TestCase {
 		int[] dialects = {
 				ICopybookDialects.FMT_MAINFRAME,
 				ICopybookDialects.FMT_FUJITSU,
-				ICopybookDialects.FMT_OPEN_COBOL,
+				ICopybookDialects.FMT_GNU_COBOL,
 				ICopybookDialects.FMT_OC_MICRO_FOCUS,
 				ICopybookDialects.FMT_FS2000,
 		};

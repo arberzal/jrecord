@@ -32,6 +32,7 @@ import net.sf.JRecord.ExternalRecordSelection.ExternalSelection;
 import net.sf.JRecord.Option.IRecordPositionOption;
 import net.sf.JRecord.def.IO.builders.ISchemaIOBuilder;
 import net.sf.JRecord.schema.IArrayItemCheck;
+import net.sf.JRecord.schema.jaxb.interfaces.IFormatField;
 
 
 /**
@@ -52,7 +53,7 @@ public interface ICobol2Xml  extends  Icb2xml2Xml  {
 	 * Set the Cobol Dialect; Possible values include<ul>
 	 *   <li><b>ICopybookDialects.FMT_MAINFRAME</b> - Mainframe Cobol
 	 *   <li><b>ICopybookDialects.FMT_FUJITSU</b> - Written for the old Fujitsu Cobol 3 compiler
-	 *   <li><b>ICopybookDialects.FMT_OPEN_COBOL</b> - GNU Cobol (formerly Open Cobol) on a Little Endian machine (e.g Intel).
+	 *   <li><b>ICopybookDialects.FMT_GNU_COBOL</b> - GNU Cobol (formerly Open Cobol) on a Little Endian machine (e.g Intel).
 	 *   <li><b>ICopybookDialects.FMT_OC_MICRO_FOCUS_BE</b> -  GNU Cobol running in Microfocus compatibility mode on a Big Endian machine
 	 * </ul
 	 * @param dialect new Cobol Dialect
@@ -113,6 +114,8 @@ public interface ICobol2Xml  extends  Icb2xml2Xml  {
 	 */
 	public abstract ICobol2Xml setRecordParent(String recordName, String parentName);
 	
+	public abstract ICobol2Xml setFormatField(IFormatField formatField);
+
 //	/**
 //	 * Convert Cobol Data File to Xml file
 //	 * 

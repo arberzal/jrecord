@@ -108,6 +108,7 @@ public class TypeManager {
             types[Type.ftCharRightJust]			= new TypeChar(false);
             types[Type.ftCharNullPadded]		= new TypeCharPadded();
             types[Type.ftCharNullTerminated]	= new TypeCharNullTerminated();
+            types[Type.ftCharNoTrim]			= new TypeChar(true, false, false, false, false);
 
             types[Type.ftNumLeftJustified]		= new TypeNum(Type.ftNumLeftJustified);
             types[Type.ftNumRightJustified]		= new TypeNum(Type.ftNumRightJustified);
@@ -128,8 +129,9 @@ public class TypeManager {
             types[Type.ftSignSepTrailActualDecimal]= new TypeSignSeparate(Type.ftSignSepTrailActualDecimal);
             types[Type.ftZonedNumeric]			= new TypeZoned();
 
-            types[Type.ftNumAnyDecimal]			= new TypeNumAnyDecimal(false);
-            types[Type.ftPositiveNumAnyDecimal]	= new TypeNumAnyDecimal(true);
+            types[Type.ftNumAnyDecimal]			= new TypeNumAnyDecimal(false, false);
+            types[Type.ftPositiveNumAnyDecimal]	= new TypeNumAnyDecimal(true, false);
+            types[Type.ftNumOrEmpty]			= new TypeNumAnyDecimal(false, true);
 
             types[Type.ftFloat]					= new TypeFloat();
             types[Type.ftDouble]				= new TypeFloat();
@@ -156,7 +158,6 @@ public class TypeManager {
 
 //            types[Type.ftCharRestOfFixedRecord] = new TypeCharRestOfFixedRecord();
             types[Type.ftCharRestOfRecord]		= new TypeCharRestOfRecord();
-
         }
     }
 
@@ -256,6 +257,14 @@ public class TypeManager {
 	 */
 	public static boolean isNumeric(int typeId) {
 		return getInstance().getType(typeId).isNumeric();
+	}
+	
+	public static boolean isSignLeading(int typeId) {
+		Type type = getInstance().getType(typeId);
+		return type.isNumeric() 
+			&& (	(! (type instanceof TypeSignSeparate))
+				||	((TypeSignSeparate) type).isLeadingSign()
+				);
 	}
 
 	public static boolean isBinary(int typeId) {
